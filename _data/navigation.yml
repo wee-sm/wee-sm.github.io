@@ -13,5 +13,5 @@ main:
 
   - title: "About"
     url: http://52.8.75.3:8080/
-  - title: "Posts"
-    url: /_posts/
+  # - title: "Posts"
+  #   url: /_posts/
