@@ -10,8 +10,8 @@ main:
   #   url: /collection-archive/
   # - title: "Sitemap"
   #   url: /sitemap/
-  
+
   - title: "About"
-    url: https://www.sungmoonwea.com/
+    url: http://52.8.75.3:8080/
   - title: "Posts"
     url: /_posts/
