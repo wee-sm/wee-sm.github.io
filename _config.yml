@@ -21,7 +21,7 @@ title_separator          : "|"
 subtitle                 : "01 Year Old Programmer, 10 Years Old Architect" # site tagline that appears below site title in masthead
 name                     : "Moon's Blog"
 description              : "I don't know!"
-url                      : https://weo-sm.github.io" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
+url                      : "https://weo-sm.github.io" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : "wee-sm/wee-sm.github.io" # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
 teaser                   : # path of fallback teaser image, e.g. "/assets/images/500x300.png"
