@@ -10,5 +10,8 @@ main:
   #   url: /collection-archive/
   # - title: "Sitemap"
   #   url: /sitemap/
-  # - title: "Posts"
-  # url: /_posts/  
+  
+  - title: "About"
+    url: https://www.sungmoonwea.com/
+  - title: "Posts"
+    url: /_posts/
