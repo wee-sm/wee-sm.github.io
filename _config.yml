@@ -127,7 +127,7 @@ footer:
       # url:
     - label: "Facebook"
       icon: "fab fa-fw fa-facebook-square"
-      url: "https://naver.com"
+      # url: "https://naver.com"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
       # url:
