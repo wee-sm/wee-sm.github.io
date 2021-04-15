@@ -119,7 +119,7 @@ shapefile_Seoul.plot()
 
 
     
-![png](/assets/images/2021-04-14/output_10_2.png)
+![png](\assets\images\2021-04-14\aoutput_10_2.png)
     
 
 
@@ -130,6 +130,13 @@ shapefile_Seoul.plot()
 
 ```python
 shapefile_Seoul["point"] = shapefile_Seoul["geometry"].centroid
+```
+
+
+```python
+# Note Googling what is the different of centroid and coords
+shapefile_Seoul['coords'] = shapefile_Seoul['geometry'].apply(lambda x: x.representative_point().coords[:])
+shapefile_Seoul['coords'] = [coords[0] for coords in shapefile_Seoul['coords']]
 ```
 
 ##### 2. Remove broken column (by encoding)
@@ -171,6 +178,7 @@ shapefile_Seoul.head(3)
       <th>SIG_ENG_NM</th>
       <th>geometry</th>
       <th>point</th>
+      <th>coords</th>
     </tr>
   </thead>
   <tbody>
@@ -180,6 +188,7 @@ shapefile_Seoul.head(3)
       <td>Jongno-gu</td>
       <td>POLYGON ((956615.453 1953567.199, 956621.579 1...</td>
       <td>POINT (953858.768 1955185.184)</td>
+      <td>(952930.8679692361, 1955652.3804498552)</td>
     </tr>
     <tr>
       <th>141</th>
@@ -187,6 +196,7 @@ shapefile_Seoul.head(3)
       <td>Jung-gu</td>
       <td>POLYGON ((957890.386 1952616.746, 957909.908 1...</td>
       <td>POINT (955484.195 1951318.204)</td>
+      <td>(955219.2141431344, 1951067.0058507507)</td>
     </tr>
     <tr>
       <th>142</th>
@@ -194,6 +204,7 @@ shapefile_Seoul.head(3)
       <td>Yongsan-gu</td>
       <td>POLYGON ((953115.761 1950834.084, 953114.206 1...</td>
       <td>POINT (954048.024 1948135.318)</td>
+      <td>(954097.8285944711, 1948107.993268157)</td>
     </tr>
   </tbody>
 </table>
@@ -348,8 +359,8 @@ Codes_SIG = region_codes[region_codes.iloc[:, 1].str.contains(Name_City)]
 Codes_SIG = Codes_SIG[Codes_SIG.iloc[:, 1].str[-1] == '구']
 
 Codes_SIG = Codes_SIG.iloc[:, [0, 1]]
-Codes_SIG = Codes_SIG.rename(columns={"법정동코드": "sigCode", "법정동명": "sigName"})
-Codes_SIG['sigCode'] = Codes_SIG['sigCode'].astype(str).str[:5]
+Codes_SIG = Codes_SIG.rename(columns={"법정동코드": "SIG_CD", "법정동명": "sigName"})
+Codes_SIG['SIG_CD'] = Codes_SIG['SIG_CD'].astype(str).str[:5]
 Codes_SIG['sigName'] = Codes_SIG['sigName'].str.replace("서울특별시 ", "")
 Codes_SIG.head(3)
 ```
@@ -375,7 +386,7 @@ Codes_SIG.head(3)
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>sigCode</th>
+      <th>SIG_CD</th>
       <th>sigName</th>
     </tr>
   </thead>
@@ -408,8 +419,8 @@ Codes_SIG.head(3)
 # step 1
 data_BMI_merge = pd.merge(Codes_SIG, data_BMI, on="sigName")
 # step 2
-shapefile_Seoul_BMI = pd.merge(shapefile_Seoul, data_BMI_merge, left_on="SIG_CD", right_on="sigCode")
-
+shapefile_Seoul_BMI = pd.merge(shapefile_Seoul, data_BMI_merge, on="SIG_CD")
+shapefile_Seoul_BMI.drop(columns=['SIG_CD'])
 shapefile_Seoul_BMI.head(3)
 ```
 
@@ -438,7 +449,7 @@ shapefile_Seoul_BMI.head(3)
       <th>SIG_ENG_NM</th>
       <th>geometry</th>
       <th>point</th>
-      <th>sigCode</th>
+      <th>coords</th>
       <th>sigName</th>
       <th>average_BMI</th>
     </tr>
@@ -450,7 +461,7 @@ shapefile_Seoul_BMI.head(3)
       <td>Jongno-gu</td>
       <td>POLYGON ((956615.453 1953567.199, 956621.579 1...</td>
       <td>POINT (953858.768 1955185.184)</td>
-      <td>11110</td>
+      <td>(952930.8679692361, 1955652.3804498552)</td>
       <td>종로구</td>
       <td>23.8</td>
     </tr>
@@ -460,7 +471,7 @@ shapefile_Seoul_BMI.head(3)
       <td>Jung-gu</td>
       <td>POLYGON ((957890.386 1952616.746, 957909.908 1...</td>
       <td>POINT (955484.195 1951318.204)</td>
-      <td>11140</td>
+      <td>(955219.2141431344, 1951067.0058507507)</td>
       <td>중구</td>
       <td>23.4</td>
     </tr>
@@ -470,7 +481,7 @@ shapefile_Seoul_BMI.head(3)
       <td>Yongsan-gu</td>
       <td>POLYGON ((953115.761 1950834.084, 953114.206 1...</td>
       <td>POINT (954048.024 1948135.318)</td>
-      <td>11170</td>
+      <td>(954097.8285944711, 1948107.993268157)</td>
       <td>용산구</td>
       <td>23.5</td>
     </tr>
@@ -490,7 +501,6 @@ import matplotlib.pyplot as plt
 
 fig, ax = plt.subplots(figsize  = (8, 8))
 
-
 shapefile_Seoul_BMI.plot(column='average_BMI',
                          ax=ax,
                          legend=True,
@@ -500,11 +510,20 @@ shapefile_Seoul_BMI.plot(column='average_BMI',
 ax.set_title("Average of BMI by Gu in Seoul", fontsize=15)
 ax.set_axis_off()
 
+
+for idx, row in shapefile_Seoul_BMI.iterrows():
+    plt.annotate(row['SIG_ENG_NM'], xy=row['coords'],
+                 horizontalalignment='center')
 plt.axis();
 ```
 
 
     
-![png](/assets/images/2021-04-14/output_24_0.png)
+![png](\assets\images\2021-04-14\output_25_0.png)
     
 
+
+
+```python
+
+```
