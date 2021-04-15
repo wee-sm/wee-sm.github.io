@@ -119,7 +119,7 @@ shapefile_Seoul.plot()
 
 
     
-![png](\assets\images\2021-04-14\aoutput_10_2.png)
+![png](\assets\images\2021-04-14\output_10_2.png)
     
 
 
