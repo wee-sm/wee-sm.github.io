@@ -119,7 +119,7 @@ shapefile_Seoul.plot()
 
 
     
-![png](https://github.com/wee-sm/wee-sm.github.io/blob/95a9de35bd8812e11cbee51990416b3d8d59926e/assets/images/single/2021-04-14-%23GIS01-Geopandas_output_10_2.png)
+![png](/assets/images/2021-04-14/output_10_2.png)
     
 
 
@@ -505,6 +505,6 @@ plt.axis();
 
 
     
-![png](https://github.com/wee-sm/wee-sm.github.io/blob/95a9de35bd8812e11cbee51990416b3d8d59926e/assets/images/single/2021-04-14-%23GIS01-Geopandas_output_24_0.png)
+![png](/assets/images/2021-04-14/output_24_0.png)
     
 
