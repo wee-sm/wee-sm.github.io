@@ -1,6 +1,6 @@
 ---
 layout: single
-title:  "First single"
+title:  "#GIS_01 Geopandas"
 ---
 
 ## Subject: get the GIS data of South Korea and visualization
@@ -119,7 +119,7 @@ shapefile_Seoul.plot()
 
 
     
-![png](images/single/2021-04-14-#GIS01-Geopandas_output_10_2.png)
+![png](assets/images/single/2021-04-14-#GIS01-Geopandas_output_10_2.png)
     
 
 
@@ -505,6 +505,6 @@ plt.axis();
 
 
     
-![png](/images/singles/2021-04-14-#GIS01-Geopandas_output_24_0.png)
+![png](assets/images/single/2021-04-14-#GIS01-Geopandas_output_24_0.png)
     
 
