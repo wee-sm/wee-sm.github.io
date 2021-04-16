@@ -158,3 +158,6 @@ shapefile_Seoul_CS.drop(columns=['point', 'coords']).to_file(Save_filePath + Sav
 ### Step 03. Load shapefile on ArcGIS
 
 ![png](\assets\images\2021-04-15\arhgis.png)
+
+### ArcGIS Dashboard Link
+https://www.arcgis.com/apps/dashboards/11aa9fab10de487ba46639a8246c87bf
