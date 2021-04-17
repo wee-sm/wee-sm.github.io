@@ -12,7 +12,7 @@ title: "#GIS_02 Geopandas to Shapefile"
 import pandas as pd
 from functools import reduce
 
-import geopandas
+import geopandas 서수지
 from urllib.request import urlopen
 from io import BytesIO
 import os
