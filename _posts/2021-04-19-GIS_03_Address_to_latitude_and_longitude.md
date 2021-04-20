@@ -3,7 +3,7 @@ layout: single
 title: "#GIS_03 Address to Latitude and Longitude"
 ---
 
-# Geocode: Address to latitude / longitude
+# Geocode
 
 ### Subject: '지하철주소' 데이터를 '위도/경도' 데이터로 변환
 
