@@ -97,7 +97,7 @@ author:
   name             : "Sungmoon Wea"
   avatar           : "/assets/images/avatar_500x500.png" # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
   bio              : "Architect, Special analyst"
-  location         : "Somewhere in the U.S."
+  location         : "San Diego, CA"
   email            : # "sungmoonwea@gmail.com"
   links:
     - label: "Email"
