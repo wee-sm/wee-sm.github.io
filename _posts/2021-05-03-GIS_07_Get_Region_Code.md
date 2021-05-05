@@ -1,6 +1,6 @@
 ---
 layout: single
-title: "#GIS_07 Resign Code (Seoul)"
+title: "#GIS_07 Region Code (Seoul)"
 ---
 
 # Get Resign Code from Korean name of resign (dong)
