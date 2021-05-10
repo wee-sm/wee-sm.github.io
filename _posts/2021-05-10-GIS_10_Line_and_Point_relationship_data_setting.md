@@ -1,9 +1,9 @@
 ---
 layout: single
-title: "# GIS 10 Line and Point relationship data setting"
+title: "#GIS 10 Line and Point relationship data setting"
 ---
 
-# GIS 10 Line_and_Point_relationship_data_setting
+# Line_and_Point_relationship_data_setting
 
 
 ```python
