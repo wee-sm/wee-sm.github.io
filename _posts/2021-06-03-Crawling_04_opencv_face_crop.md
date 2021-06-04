@@ -56,7 +56,9 @@ def face_crop_cv2(imageName, filePath=".", savePath="."):
         face_boundary_ratio = 0.1
 
         if len(faces) > 0: # if face is detected
+            faceNo = 0
             for (x, y, w, h) in faces:
+                faceNo += 1
                 y1 = int(y-face_boundary_ratio*h)
                 y2 = int(y + (1+face_boundary_ratio)*h)
                 x1 = int(x-face_boundary_ratio*w)
@@ -65,7 +67,7 @@ def face_crop_cv2(imageName, filePath=".", savePath="."):
                 # cv2.rectangle(img, (x1, y1), (x2, y2), (0, 0, 255), 0)
                 faces = img[y1:y2,x1:x2]
                 resized_faces = cv2.resize(faces, dsize=(400, 400), interpolation=cv2.INTER_AREA)
-                cv2.imwrite(savePath, resized_faces)
+                cv2.imwrite(savePath.split(".")[0]+str(faceNo)+".jpg", resized_faces)
                 # cv2.imshow("face",resized_faces)
                 print("[o]", end="")
 
